@@ -19,6 +19,7 @@ $url = "https://api.twitch.tv/kraken/channels/" . $name . "/follows?direction=DE
 $rawJson = file_get_contents($url);
 $json = json_decode($rawJson, true);
 $followers = $json['follows'];
+$times = 0;
 for($x = 0;$x < 100; $x++){
     $follower = $followers[$x]['user']['display_name'];
     if(is_null($follower)){
@@ -33,6 +34,10 @@ for($x = 0;$x < 100; $x++){
         echo "<div class='name'>" . $follower . "</div>";
     echo "</div>";
     echo "&nbsp;";
+    $times++;
+}
+if($time==0){
+    echo "No followers to show!";
 }
 ?>
 </body>
